@@ -1,0 +1,80 @@
+01 . what is diff between arm64 and amd64
+
+    arm64 and amd64 are different CPU architectures:
+    amd64:
+    Also called x86_64
+    Used by Intel and AMD desktop/server CPUs
+    Very common in laptops, desktops, cloud VMs
+
+    arm64:
+    Also called aarch64
+    Used by ARM CPUs (Apple Silicon, AWS Graviton, many mobile/embedded devices)
+    Often better power efficiency (performance per watt)
+    Key difference: binaries are architecture-specific.
+    An amd64 binary won’t run natively on arm64 (and vice versa) unless you use emulation or build multi-arch images/binaries.
+
+02. what is containerd
+    containerd is a container runtime daemon.
+
+    In practical terms, it is the software that actually manages container lifecycle on a node:
+    pull images
+    unpack images
+    create/start/stop containers
+    manage container storage and snapshots
+    In Kubernetes, kubelet talks to containerd through the CRI (Container Runtime Interface).
+    So Kubernetes schedules pods, and containerd does the low-level work to run their containers.
+
+03. CRI (Container Runtime Interface)
+
+04. more info on CNI-PLUGINS and what crictl software for?
+
+05. scp means secure copy.
+It copies files between machines over SSH.
+
+06. Understand more on VM Network creation
+    a. NAT 
+    b. Host-Only
+    c. cloud
+
+07. Understand on Network Interface of each VM
+    a. NAT why to configure this?
+    b. Host-Only why to configure this?
+
+08. CIDR [Classless Inter-Domain Routing] and CNI [Container Network Interface]
+
+
+09. SSH and SSH Agent other things related to SSH
+
+10. CA [Certificate Authority] 
+    A Certificate Authority (CA) is a trusted entity that issues and signs digital certificates.
+
+    In Kubernetes:
+    The CA signs certs for components (API server, kubelet, etcd, users).
+    Components trust the CA certificate.
+    If a cert is signed by that CA, it’s treated as authentic.
+    So CA provides:
+
+    Identity verification (who is this component/user?)
+    Trust chain (signed by trusted CA)
+    Basis for TLS encryption + mutual authentication (mTLS)
+
+11. OpenSSL for provisioning the Certificate
+
+12. understand on ca.configure
+
+13. kubelet? 
+    kubelet is the Kubernetes node agent that runs on every worker (and often control-plane) node.
+    It:
+    * watches Pod specs assigned to its node (from API server)
+    * asks container runtime (containerd) to start/stop containers
+    * mounts volumes/secrets/configs
+    * runs health checks and reports node/pod status back to API server
+    * So scheduler decides where a pod runs, and kubelet makes it actually run on that node.
+
+ Thought: although we have kubernates api service why we need kubernates proxy service?
+
+ 14. Understand each kubernates component in detail, kube-api-service, kubectl, kube-proxy-service, 
+     kubelet, on container side understand containerd and configurations file need to be created 
+     each of it to understand how configurations happens in each of kubernates components
+
+15. understand algorithms that are used in encryption

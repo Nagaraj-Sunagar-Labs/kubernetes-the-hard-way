@@ -7,7 +7,7 @@ Think of the `jumpbox` as the administration machine that you will use as a home
 Log in to the `jumpbox`:
 
 ```bash
-ssh root@jumpbox
+ssh root@jumpbox-
 ```
 
 All commands will be run as the `root` user. This is being done for the sake of convenience, and will help reduce the number of commands required to set everything up.
